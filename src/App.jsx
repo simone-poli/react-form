@@ -45,6 +45,15 @@ function App() {
     setNewArticle('')
   }
 
+
+
+  const removeTask = index => {
+    const updatesTask = articles.filter((articles, i) => {
+      return i !== index
+    })
+    setArticles(updatesTask)
+  }
+
   return (
     <>
       <div className="container mt-4">
@@ -52,7 +61,10 @@ function App() {
           {
             articles.map((articles, index) => {
               return (
-                <li key={index} className="list-group-item">{articles.title}</li>
+                <li key={index} className="list-group-item d-flex justify-content-between">
+                  <p>{articles.title}</p>
+                  <button onClick={() => removeTask(index)}><i class="fa-solid fa-trash-can"></i></button>
+                </li>
 
               )
             })
